@@ -1,10 +1,10 @@
-import { 
-  AppBar, 
-  Box, 
-  Container, 
-  InputBase, 
-  Toolbar, 
-  Typography, 
+import {
+  AppBar,
+  Box,
+  Container,
+  InputBase,
+  Toolbar,
+  Typography,
   IconButton,
   Badge,
   Select,
@@ -14,19 +14,19 @@ import {
   Drawer,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
 } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
+import {
   Search as SearchIcon,
   Person as PersonIcon,
   ShoppingCart as CartIcon,
-  KeyboardArrowDown as ArrowDownIcon,
   Menu as MenuIcon,
-  Close as CloseIcon
+  Close as CloseIcon,
 } from '@mui/icons-material';
 import { useState } from 'react';
+import NavigationBar from '@/components/NavigationBar.tsx'; // Import the new NavigationBar
 
 // Styled Components
 const AnnouncementBar = styled(Box)(({ theme }) => ({
@@ -54,29 +54,6 @@ const SearchBox = styled(Box)(({ theme }) => ({
   maxWidth: '600px',
 }));
 
-const NavLink = styled(Link)(({ theme }) => ({
-  color: '#374151',
-  textDecoration: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(1),
-  '&:hover': {
-    color: theme.palette.primary.main,
-  },
-}));
-
-const NavigationBar = styled(Box)(({ theme }) => ({
-  backgroundColor: '#F8F9FA',
-  borderTop: '1px solid #E5E7EB',
-  borderBottom: '1px solid #E5E7EB',
-  padding: theme.spacing(0.5, 0),
-  display: 'flex',
-  justifyContent: 'space-between',
-  [theme.breakpoints.down('md')]: {
-    display: 'none', // Hide on mobile
-  }
-}));
-
 const Header = () => {
   const [category, setCategory] = useState('All Categories');
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -94,32 +71,30 @@ const Header = () => {
       {/* Announcement Bar */}
       <AnnouncementBar>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography 
-            component="span" 
-            sx={{ 
+          <Typography
+            component="span"
+            sx={{
               backgroundColor: '#C81E1E',
               px: 1,
               py: 0.5,
               borderRadius: 1,
               mr: 1,
               fontSize: '0.875rem',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             }}
           >
             HOT
           </Typography>
-          <Typography variant="body2">
-            Free Express Shipping
-          </Typography>
+          <Typography variant="body2">Free Express Shipping</Typography>
         </Box>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Select
             value="EN"
             size="small"
-            sx={{ 
+            sx={{
               color: 'white',
               '& .MuiSelect-icon': { color: 'white' },
-              '& .MuiOutlinedInput-notchedOutline': { border: 'none' }
+              '& .MuiOutlinedInput-notchedOutline': { border: 'none' },
             }}
           >
             <MenuItem value="EN">EN</MenuItem>
@@ -144,22 +119,19 @@ const Header = () => {
         <Container maxWidth="lg">
           <StyledToolbar>
             {/* Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
-              <Image src="/logo.svg" alt="Bazaar" width={120} height={40} />
+            <Link href="/logo2.svg" style={{ display: 'flex', alignItems: 'center' }}>
+              <Image src="/logo2.svg" alt="Bazaar" width={120} height={40} />
             </Link>
 
             {/* Search */}
             <SearchBox>
-              <InputBase
-                placeholder="Searching for..."
-                sx={{ ml: 2, flex: 1 }}
-              />
+              <InputBase placeholder="Searching for..." sx={{ ml: 2, flex: 1 }} />
               <Select
                 value={category}
                 onChange={handleCategoryChange}
-                sx={{ 
+                sx={{
                   minWidth: 150,
-                  '& .MuiOutlinedInput-notchedOutline': { border: 'none' }
+                  '& .MuiOutlinedInput-notchedOutline': { border: 'none' },
                 }}
               >
                 <MenuItem value="All Categories">All Categories</MenuItem>
@@ -188,17 +160,7 @@ const Header = () => {
       </AppBar>
 
       {/* Navigation for larger screens */}
-      <NavigationBar>
-        <Container maxWidth="lg">
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            <NavLink href="/home">Home <ArrowDownIcon /></NavLink>
-            <NavLink href="/mega-menu">Mega Menu <ArrowDownIcon /></NavLink>
-            <NavLink href="/full-screen-menu">Full Screen Menu <ArrowDownIcon /></NavLink>
-            <NavLink href="/pages">Pages <ArrowDownIcon /></NavLink>
-            <NavLink href="/user-account">User Account <ArrowDownIcon /></NavLink>
-          </Box>
-        </Container>
-      </NavigationBar>
+      <NavigationBar /> {/* Replace the existing NavigationBar with the new component */}
 
       {/* Mobile Drawer Menu */}
       <Drawer anchor="left" open={mobileOpen} onClose={toggleMobileMenu}>

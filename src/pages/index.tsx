@@ -7,6 +7,7 @@ import { Box } from '@mui/material';
 import Footer from '@/components/Footer';
 import DealsOfDay from '@/components/DealsOfDay'
 import ProductShowcase from '@/components/ProductShowcase'
+import ProductCarousel from '@/components/ProductCarousel'
 
 const HomePage = () => (
   <Box>
@@ -15,6 +16,7 @@ const HomePage = () => (
     <CategoriesGrid/>
     <DealsOfDay/>
     <ProductShowcase/>
+    <ProductCarousel/>
     <Footer/>
   </Box>
 );
